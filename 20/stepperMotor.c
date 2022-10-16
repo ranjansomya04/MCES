@@ -1,5 +1,7 @@
 #include <lpc214x.h>
+#define PLOCK 0x00000400
 void delay_ms(unsigned int j);
+void SystemInit(void);
 int main()
 {
 	SystemInit();

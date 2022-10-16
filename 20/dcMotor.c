@@ -1,4 +1,5 @@
 #include <lpc214x.h>
+#define PLOCK 0x00000400
 void delay_ms(unsigned int j);
 void SystemInit(void);
 void runDCMotor(int direction, int dutycycle);
@@ -8,7 +9,7 @@ int main()
 {
 	int dig_val;
 	IO0DIR |= 1U << 31 | 0x00FF0000 | 1U << 30; // to set P0.16 to P0.23 as o/ps
-	SystemInit( );
+	SystemInit();
 	do {
 		dig_val = adc(1, 2) / 10;
 		if (dig_val > 100) dig_val = 100;
@@ -41,10 +42,8 @@ unsigned int adc(int no, int ch)
 	switch (no)
 	{
 	case 0: AD0CR = 0x00200600 | (1 << ch);
-		AD0CR | = (1 << 24) ;
+		AD0CR |= (1 << 24) ;
 		while ( ( AD0GDR & ( 1U << 31 ) ) == 0);
-
-		LPC 2148 Microcontroller Interfacing - ©Copyrights, Dr K Badari Nath, RVCE, Feb2020 Page 35
 		val = AD0GDR;
 		break;
 	case 1: AD1CR = 0x00200600 | ( 1 << ch );

@@ -27,8 +27,6 @@ int main( )
             rowsel = 0; IO0SET = 0X000F0000; IO0CLR = 1 << 16;
             if (COL0 == 0) {colsel = 0; break;}; if (COL1 == 0) {colsel = 1; break;};
             if (COL2 == 0) {colsel = 2; break;}; if (COL3 == 0) {colsel = 3; break;};
-
-            LPC 2148 Microcontroller Interfacing - ©Copyrights, Dr K Badari Nath, RVCE, Feb2020 Page 18
             rowsel = 1; IO0SET = 0X000F0000; IO0CLR = 1 << 17;
             if (COL0 == 0) {colsel = 0; break;}; if (COL1 == 0) {colsel = 1; break;};
             if (COL2 == 0) {colsel = 2; break;}; if (COL3 == 0) {colsel = 3; break;};

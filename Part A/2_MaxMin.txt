@@ -1,0 +1,33 @@
+	AREA RESET,CODE
+	ENTRY
+	
+	LDR R0,=ARR
+	LDR R1,=0x40000000; Answer Location
+	MOV R2,#4; Number of Elements
+	LDR R3,[R0]; Smallest Element
+	LDR R4,[R0]; Largest Element
+	
+BACK
+	LDR R5,[R0]; Current Element
+	CMP R5,R3
+	BGT N_LESS
+	MOV R3,R5
+N_LESS
+	CMP R5,R4
+	BLS N_GREAT
+	MOV R4,R5
+N_GREAT
+	ADD R0,R0,#4
+	SUB R2,#1
+	CMP R2,#0
+	BNE BACK
+	
+	STR R3,[R1]
+	STR R4,[R1,#4]	
+	
+STOP B STOP
+
+ARR DCD &91,&43,&123,&34
+	END
+	
+	

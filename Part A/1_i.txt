@@ -1,0 +1,59 @@
+	;A = B + C -D
+	AREA RESET, CODE
+	ENTRY
+	
+	MOV R0,#0
+	MOV R1,#2
+	MOV R2,#15
+	MOV R3,#9
+	
+	ADD R0,R1,R2
+	SUB R0,R0,R3
+	
+STOP B STOP
+
+	END
+
+
+
+
+
+
+	;A = 2*A + B
+	AREA RESET,CODE
+	ENTRY
+	
+	MOV R0,#0
+	MOV R1,#4
+	MOV R2,#8
+	ADD R0,R2,R1,LSL #1
+STOP B STOP
+	END
+
+
+	
+
+
+
+
+	;A = 3X + 4Y + 9X
+	AREA RESET,CODE
+	ENTRY
+		
+	MOV R0,#0
+	MOV R1,#1
+	MOV R2,#1
+	MOV R3,#1
+	
+	ADD R1,R1,R1,LSL #1
+	
+	MOV R2,R2,LSL #2
+	
+	ADD R3,R3,R3, LSL #3
+	
+	ADD R0,R1,R2
+	ADD R0,R0,R3
+	
+STOP B STOP
+	END
+	
